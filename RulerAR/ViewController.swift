@@ -19,8 +19,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set the view's delegate
+
+      // Set the view's delegate
       sceneView.delegate = self
       sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
       
@@ -52,7 +52,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
       }
       dotNodes = [SCNNode]()
     }
-    
+
     if let touchLocation = touches.first?.location(in: sceneView) {
       let hitTestResults = sceneView.hitTest(touchLocation, types: .featurePoint)
       
