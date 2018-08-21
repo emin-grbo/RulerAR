@@ -45,26 +45,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   
   //MARK: - Touch Detection
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
-    if dotNodes.count >= 2 {
-      for dot in dotNodes {
-        dot.removeFromParentNode()
-      }
-      dotNodes = [SCNNode]()
-    }
 
     if let touchLocation = touches.first?.location(in: sceneView) {
       let hitTestResults = sceneView.hitTest(touchLocation, types: .featurePoint)
       
       if let hitResult = hitTestResults.first {
-        addDot(at: hitResult)
+        //addDot(at: hitResult)
       }
       
     }
   }
   
   //MARK: - Adding a dot
-  func addDot(at hitResult: ARHitTestResult) {
+  func addDot(at centreVector: SCNVector3) {
     
     let dot = SCNSphere(radius: 0.005)
     
@@ -76,11 +69,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     let dotNode = SCNNode(geometry: dot)
     
-    dotNode.position = SCNVector3(
-      hitResult.worldTransform.columns.3.x,
-      hitResult.worldTransform.columns.3.y,
-      hitResult.worldTransform.columns.3.z
-    )
+    dotNode.position = centreVector
 
       sceneView.scene.rootNode.addChildNode(dotNode)
     
@@ -127,11 +116,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
   }
   
+  //MARK: - Button action
   @IBAction func addMarker(_ sender: Any) {
     
-    let vector = sceneView.realWorldVector(screenPos: sceneView.center)
+    // removing dots if more than 2
+    if dotNodes.count >= 2 {
+      for dot in dotNodes {
+        dot.removeFromParentNode()
+        updateText(text: "", atPosition: SCNVector3())
+      }
+      dotNodes = [SCNNode]()
+    }
     
+    // converting CGpoint to SCNVector3
+    if let vector = sceneView.realWorldVector(screenPos: sceneView.center){
     addDot(at: vector)
+    }
     
   }
   
