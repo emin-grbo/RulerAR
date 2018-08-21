@@ -12,10 +12,14 @@ import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
-    @IBOutlet var sceneView: ARSCNView!
+  @IBOutlet var sceneView: ARSCNView!
+  @IBOutlet weak var distanceAlabel: UILabel!
+  @IBOutlet weak var distanceBlabel: UILabel!
   
   var dotNodes = [SCNNode]()
   var textNode = SCNNode()
+  var distanceA: Float = 0.0
+  var distanceB: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +53,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     if let touchLocation = touches.first?.location(in: sceneView) {
       let hitTestResults = sceneView.hitTest(touchLocation, types: .featurePoint)
       
-      if let hitResult = hitTestResults.first {
-        //addDot(at: hitResult)
-      }
+//      if let hitResult = hitTestResults.first {
+//        //addDot(at: hitResult)
+//      }
       
     }
   }
@@ -83,47 +87,50 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   //MARK: - Calculate distance
   func  calculate() {
     let start = dotNodes[0]
-    let end = dotNodes[1]
+    let mid = dotNodes[1]
+    if dotNodes.count > 2 {
+      let end = dotNodes[2]
+      distanceB = mid.position.distance(from: end.position)
+    }
     
-    print(start.position)
-    print(end.position)
+    distanceA = start.position.distance(from: mid.position)
+
     
-    let a = end.position.x - start.position.x
-    let b = end.position.y - start.position.y
-    let c = end.position.z - start.position.z
-    
-    let distance = sqrt(pow(a,2) + pow(b,2) + pow(c,2))
-    
-    updateText(text: String(distance), atPosition: end.position)
+    updateText(textA: distanceA, textB: distanceB)
   }
-  
   
   //MARK: - Adding a text overlay
-  func updateText(text: String, atPosition: SCNVector3) {
+  func updateText(textA: Float, textB: Float) {
     
-    textNode.removeFromParentNode()
+    let valueCMA = textA * 100
+    let valueCMB = textB * 100
     
-    let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
-    
-    textGeometry.firstMaterial?.diffuse.contents = UIColor.red
-    
-    textNode = SCNNode(geometry: textGeometry)
-    
-    textNode.position = atPosition
-    textNode.scale = SCNVector3(0.01, 0.01, 0.01)
-    
-    sceneView.scene.rootNode.addChildNode(textNode)
-    
+    distanceAlabel.text = String(format: "%.2fcm", valueCMA)
+    distanceBlabel.text = String(format: "%.2fcm", valueCMB)
+
   }
+  
+  //    textNode.removeFromParentNode()
+  //
+  //    let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
+  //
+  //    textGeometry.firstMaterial?.diffuse.contents = UIColor.red
+  //
+  //    textNode = SCNNode(geometry: textGeometry)
+  //
+  //    textNode.position = atPosition
+  //    textNode.scale = SCNVector3(0.01, 0.01, 0.01)
+  
+  //    sceneView.scene.rootNode.addChildNode(textNode)
   
   //MARK: - Button action
   @IBAction func addMarker(_ sender: Any) {
     
-    // removing dots if more than 2
-    if dotNodes.count >= 2 {
+    // removing dots if more than 3
+    if dotNodes.count >= 3 {
       for dot in dotNodes {
         dot.removeFromParentNode()
-        updateText(text: "", atPosition: SCNVector3())
+        updateText(textA: 0.0, textB: 0.0)
       }
       dotNodes = [SCNNode]()
     }
