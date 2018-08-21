@@ -24,6 +24,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhF-mF-MTj">
                                 <rect key="frame" x="133" y="465" width="54" height="64"/>
                                 <state key="normal" image="addMarker"/>
+                                <connections>
+                                    <action selector="addMarker:" destination="vQJ-ni-ztl" eventType="touchUpInside" id="YO9-1N-Gtt"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hud" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-fo-cX7">
                                 <rect key="frame" x="135" y="271.5" width="50" height="26"/>

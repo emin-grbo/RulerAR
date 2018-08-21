@@ -127,6 +127,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
   }
   
+  @IBAction func addMarker(_ sender: Any) {
+    
+    let vector = sceneView.realWorldVector(screenPos: sceneView.center)
+    
+    addDot(at: vector)
+    
+  }
+  
+  
 }
 
 
