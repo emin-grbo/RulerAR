@@ -106,43 +106,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     textNode = SCNNode(geometry: textGeometry)
     
-    textNode.scale = SCNVector3(0.001, 0.001, 0.001)
-    
     //MARK: TextNode Position
     let node1 = dotNodes[0].position
     let node2 = dotNodes[1].position
-
-//    let dx = (node2.x + node1.x)/2.0
-//    let dy = (node2.y + node1.y)/2.0
-//    let dz = (node2.z + node1.z)/2.0
-//    let position =  SCNVector3(dx, dy, dz)
-//
-//    textNode.position = position
     
     textNode.position = SCNVector3((node2.x + node1.x)/2.0,
                                    (node2.y + node1.y)/2.0,
                                    (node2.z + node1.z)/2.0)
     
-//    textNode.eulerAngles = SCNVector3Make(0, .pi, 0)
-    
-//    let cameraNode = SCNNode()
-//    cameraNode.camera = SCNCamera()
-//    cameraNode.position = SCNVector3Make(0, 0, 10)
-//    sceneView.scene.rootNode.addChildNode(cameraNode)
-    
-//    let wrapperNode = SCNNode()
-//    wrapperNode.addChildNode(textNode)
-    
-//    let constraint = SCNLookAtConstraint(target: cameraNode)
-//    constraint.isGimbalLockEnabled = true
-//    wrapperNode.constraints = [constraint]
-    
-    //textNode.constraints = [SCNBillboardConstraint]()
-    
+    //MARK: Text rotation to camera
     textNode.pivot = SCNMatrix4Rotate(textNode.pivot, Float.pi, 0, 1, 0)
     let lookAt = SCNLookAtConstraint(target: sceneView.pointOfView)
     lookAt.isGimbalLockEnabled = true
     textNode.constraints = [lookAt]
+    
+    //MARK: Text scale
+    if let cameraDistance = sceneView.pointOfView?.position.z {
+    let textScale = abs((node1.z - cameraDistance) / 150)
+      print(textScale)
+    textNode.scale = SCNVector3(textScale, textScale, textScale)
+    }
     
     sceneView.scene.rootNode.addChildNode(textNode)
     
