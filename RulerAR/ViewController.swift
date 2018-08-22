@@ -13,8 +13,6 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
   @IBOutlet var sceneView: ARSCNView!
-  @IBOutlet weak var distanceAlabel: UILabel!
-  @IBOutlet weak var distanceBlabel: UILabel!
   
   var dotNodes = [SCNNode]()
   var textNode = SCNNode()
@@ -87,50 +85,78 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   //MARK: - Calculate distance
   func  calculate() {
     let start = dotNodes[0]
-    let mid = dotNodes[1]
-    if dotNodes.count > 2 {
-      let end = dotNodes[2]
-      distanceB = mid.position.distance(from: end.position)
-    }
+    let end = dotNodes[1]
     
-    distanceA = start.position.distance(from: mid.position)
-
-    
+    distanceA = start.position.distance(from: end.position)
     updateText(textA: distanceA, textB: distanceB)
+//    distanceAlabel.frame.origin = CGPoint(x: 10.0, y: 10.0)
   }
   
   //MARK: - Adding a text overlay
   func updateText(textA: Float, textB: Float) {
     
-    let valueCMA = textA * 100
-    let valueCMB = textB * 100
+    let distanceCM = String(format: "%.2f", (textA * 100))
     
-    distanceAlabel.text = String(format: "%.2fcm", valueCMA)
-    distanceBlabel.text = String(format: "%.2fcm", valueCMB)
+    //MARK: 3D Text
+    textNode.removeFromParentNode()
+    
+    let textGeometry = SCNText(string: distanceCM, extrusionDepth: 0.1)
+    
+    textGeometry.firstMaterial?.diffuse.contents = UIColor.red
+    
+    textNode = SCNNode(geometry: textGeometry)
+    
+    textNode.scale = SCNVector3(0.001, 0.001, 0.001)
+    
+    //MARK: TextNode Position
+    let node1 = dotNodes[0].position
+    let node2 = dotNodes[1].position
 
+//    let dx = (node2.x + node1.x)/2.0
+//    let dy = (node2.y + node1.y)/2.0
+//    let dz = (node2.z + node1.z)/2.0
+//    let position =  SCNVector3(dx, dy, dz)
+//
+//    textNode.position = position
+    
+    textNode.position = SCNVector3((node2.x + node1.x)/2.0,
+                                   (node2.y + node1.y)/2.0,
+                                   (node2.z + node1.z)/2.0)
+    
+//    textNode.eulerAngles = SCNVector3Make(0, .pi, 0)
+    
+//    let cameraNode = SCNNode()
+//    cameraNode.camera = SCNCamera()
+//    cameraNode.position = SCNVector3Make(0, 0, 10)
+//    sceneView.scene.rootNode.addChildNode(cameraNode)
+    
+//    let wrapperNode = SCNNode()
+//    wrapperNode.addChildNode(textNode)
+    
+//    let constraint = SCNLookAtConstraint(target: cameraNode)
+//    constraint.isGimbalLockEnabled = true
+//    wrapperNode.constraints = [constraint]
+    
+    //textNode.constraints = [SCNBillboardConstraint]()
+    
+    textNode.pivot = SCNMatrix4Rotate(textNode.pivot, Float.pi, 0, 1, 0)
+    let lookAt = SCNLookAtConstraint(target: sceneView.pointOfView)
+    lookAt.isGimbalLockEnabled = true
+    textNode.constraints = [lookAt]
+    
+    sceneView.scene.rootNode.addChildNode(textNode)
+    
   }
   
-  //    textNode.removeFromParentNode()
-  //
-  //    let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
-  //
-  //    textGeometry.firstMaterial?.diffuse.contents = UIColor.red
-  //
-  //    textNode = SCNNode(geometry: textGeometry)
-  //
-  //    textNode.position = atPosition
-  //    textNode.scale = SCNVector3(0.01, 0.01, 0.01)
-  
-  //    sceneView.scene.rootNode.addChildNode(textNode)
+
   
   //MARK: - Button action
   @IBAction func addMarker(_ sender: Any) {
     
     // removing dots if more than 3
-    if dotNodes.count >= 3 {
+    if dotNodes.count >= 2 {
       for dot in dotNodes {
         dot.removeFromParentNode()
-        updateText(textA: 0.0, textB: 0.0)
       }
       dotNodes = [SCNNode]()
     }
