@@ -18,6 +18,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   var textNode = SCNNode()
   var distanceA: Float = 0.0
   var distanceB: Float = 0.0
+  var line_node: SCNNode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,40 +46,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
   
-  //MARK: - Touch Detection
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    if let touchLocation = touches.first?.location(in: sceneView) {
-      let hitTestResults = sceneView.hitTest(touchLocation, types: .featurePoint)
-      
-//      if let hitResult = hitTestResults.first {
-//        //addDot(at: hitResult)
-//      }
-      
-    }
-  }
-  
   //MARK: - Adding a dot
   func addDot(at centreVector: SCNVector3) {
     
     let dot = SCNSphere(radius: 0.005)
-    
     let dotMaterial = SCNMaterial()
     dotMaterial.diffuse.contents = UIColor.red
-    
     dot.materials = [dotMaterial]
     
-    
     let dotNode = SCNNode(geometry: dot)
-    
     dotNode.position = centreVector
 
-      sceneView.scene.rootNode.addChildNode(dotNode)
-    
+    sceneView.scene.rootNode.addChildNode(dotNode)
     dotNodes.append(dotNode)
     
     if dotNodes.count >= 2 {
       calculate()
+      let line = getDrawnLineFrom(pos1: dotNodes[0].position, toPos2: dotNodes[1].position)
+      sceneView.scene.rootNode.addChildNode(line)
     }
   }
   
@@ -131,8 +116,54 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
   }
   
-
+  //MARK: - Draw the line
+  // draw line-node between two vectors
+  func getDrawnLineFrom(pos1: SCNVector3,
+                        toPos2: SCNVector3) -> SCNNode {
+    
+    let line = lineFrom(vector: pos1, toVector: toPos2)
+    let lineInBetween1 = SCNNode(geometry: line)
+    return lineInBetween1
+  }
   
+  // get line geometry between two vectors
+  func lineFrom(vector vector1: SCNVector3,
+                toVector vector2: SCNVector3) -> SCNGeometry {
+    
+    let indices: [Int32] = [0, 1]
+    let source = SCNGeometrySource(vertices: [vector1, vector2])
+    let element = SCNGeometryElement(indices: indices,
+                                     primitiveType: .line)
+    return SCNGeometry(sources: [source], elements: [element])
+  }
+  
+  func renderer(_ renderer: SCNSceneRenderer,
+                updateAtTime time: TimeInterval) {
+    
+    DispatchQueue.main.async {
+      // get current hit position
+      // and check if start-node is available
+      if self.dotNodes.isEmpty == false {
+       let currentPosition = self.sceneView.realWorldVector(screenPos: self.sceneView.center)
+        
+        self.line_node?.removeFromParentNode()
+        self.line_node = self.getDrawnLineFrom(pos1: self.dotNodes[0].position,
+                                               toPos2: currentPosition!)
+        self.sceneView.scene.rootNode.addChildNode(self.line_node!)
+      } else {
+        return
+      }
+      
+
+      
+    }
+  }
+  
+  
+  
+  
+  
+
   //MARK: - Button action
   @IBAction func addMarker(_ sender: Any) {
     
