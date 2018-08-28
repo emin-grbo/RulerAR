@@ -18,7 +18,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   var textNode = SCNNode()
   var distanceA: Float = 0.0
   var distanceB: Float = 0.0
-  var line_node: SCNNode?
+  var lineNode: SCNNode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +62,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     if dotNodes.count >= 2 {
       calculate()
-      let line = getDrawnLineFrom(pos1: dotNodes[0].position, toPos2: dotNodes[1].position)
-      sceneView.scene.rootNode.addChildNode(line)
+      draw()
     }
   }
   
@@ -77,6 +76,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //    distanceAlabel.frame.origin = CGPoint(x: 10.0, y: 10.0)
   }
   
+  //MARK: - Draw the line
+  func draw() {
+    var dotOne = 0
+    var dotTwo = 0
+    
+    if dotNodes.count == 4 {
+      dotOne = 3
+      dotTwo = 0
+
+    } else {
+    dotOne = dotNodes.endIndex - 2
+    dotTwo = dotNodes.endIndex - 1
+    }
+    
+    lineNode = getDrawnLineFrom(from: dotNodes[dotOne].position, to: dotNodes[dotTwo].position)
+    sceneView.scene.rootNode.addChildNode(lineNode!)
+  }
+  
   //MARK: - Adding a text overlay
   func updateText(textA: Float, textB: Float) {
     
@@ -86,9 +103,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     textNode.removeFromParentNode()
     
     let textGeometry = SCNText(string: distanceCM, extrusionDepth: 0.1)
-    
     textGeometry.firstMaterial?.diffuse.contents = UIColor.red
-    
     textNode = SCNNode(geometry: textGeometry)
     
     //MARK: TextNode Position
@@ -116,71 +131,55 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
   }
   
-  //MARK: - Draw the line
-  // draw line-node between two vectors
-  func getDrawnLineFrom(pos1: SCNVector3,
-                        toPos2: SCNVector3) -> SCNNode {
-    
-    let line = lineFrom(vector: pos1, toVector: toPos2)
-    let lineInBetween1 = SCNNode(geometry: line)
-    return lineInBetween1
-  }
   
-  // get line geometry between two vectors
-  func lineFrom(vector vector1: SCNVector3,
-                toVector vector2: SCNVector3) -> SCNGeometry {
-    
-    let indices: [Int32] = [0, 1]
-    let source = SCNGeometrySource(vertices: [vector1, vector2])
-    let element = SCNGeometryElement(indices: indices,
-                                     primitiveType: .line)
-    return SCNGeometry(sources: [source], elements: [element])
-  }
-  
+  // MARK: - Showing line in real-time
   func renderer(_ renderer: SCNSceneRenderer,
                 updateAtTime time: TimeInterval) {
     
     DispatchQueue.main.async {
-      // get current hit position
-      // and check if start-node is available
-      if self.dotNodes.isEmpty == false {
-       let currentPosition = self.sceneView.realWorldVector(screenPos: self.sceneView.center)
+
+      if self.dotNodes.isEmpty == false && self.dotNodes.count != 4 {
+        guard let currentPosition = self.sceneView.realWorldVector(screenPos: self.sceneView.center),
+              let placedNode = self.dotNodes.last?.position else {return}
         
-        self.line_node?.removeFromParentNode()
-        self.line_node = self.getDrawnLineFrom(pos1: self.dotNodes[0].position,
-                                               toPos2: currentPosition!)
-        self.sceneView.scene.rootNode.addChildNode(self.line_node!)
+        self.lineNode?.removeFromParentNode()
+        
+        self.lineNode = self.getDrawnLineFrom(from: placedNode,
+                                               to: currentPosition)
+        self.sceneView.scene.rootNode.addChildNode(self.lineNode!)
       } else {
         return
       }
-      
-
-      
     }
   }
-  
-  
-  
-  
-  
+
 
   //MARK: - Button action
   @IBAction func addMarker(_ sender: Any) {
     
-    // removing dots if more than 3
-    if dotNodes.count >= 2 {
-      for dot in dotNodes {
-        dot.removeFromParentNode()
-      }
+    // removing dots if more than 4
+    if dotNodes.count >= 4 {
+      sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+        node.removeFromParentNode() }
       dotNodes = [SCNNode]()
-    }
-    
+  }
     // converting CGpoint to SCNVector3
     if let vector = sceneView.realWorldVector(screenPos: sceneView.center){
-    addDot(at: vector)
+      addDot(at: vector)
     }
-    
+}
+
+  //MARK: - Delete ALL Nodes
+  @IBAction func refreshBtn(_ sender: Any) {
+    sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+      node.removeFromParentNode() }
   }
+  
+  
+  
+  
+  
+  
   
   
 }

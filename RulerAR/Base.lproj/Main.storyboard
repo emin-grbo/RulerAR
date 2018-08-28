@@ -37,12 +37,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Erv-IV-8tU">
                                 <rect key="frame" x="50" y="482" width="32" height="25"/>
                                 <state key="normal" image="refresh"/>
+                                <connections>
+                                    <action selector="refreshBtn:" destination="vQJ-ni-ztl" eventType="touchUpInside" id="drl-K7-NBg"/>
+                                </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DFq-Sn-0yo">
-                                <rect key="frame" x="235" y="482" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SURFACE M2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkQ-lu-yTD">
                                 <rect key="frame" x="128" y="20" width="65" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
