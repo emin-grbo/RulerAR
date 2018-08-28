@@ -16,9 +16,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   
   var dotNodes = [SCNNode]()
   var textNode = SCNNode()
-  var distanceA: Float = 0.0
-  var distanceB: Float = 0.0
+  var distance: Float = 0.0
   var lineNode: SCNNode?
+  var dotOne = 0
+  var dotTwo = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,47 +69,55 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   
   //MARK: - Calculate distance
   func  calculate() {
-    let start = dotNodes[0]
-    let end = dotNodes[1]
+    updateDots()
+    let start = dotNodes[dotOne]
+    let end = dotNodes[dotTwo]
     
-    distanceA = start.position.distance(from: end.position)
-    updateText(textA: distanceA, textB: distanceB)
-//    distanceAlabel.frame.origin = CGPoint(x: 10.0, y: 10.0)
+    distance = start.position.distance(from: end.position)
+    updateDistance(text: distance)
   }
   
   //MARK: - Draw the line
   func draw() {
-    var dotOne = 0
-    var dotTwo = 0
-    
-    if dotNodes.count == 4 {
-      dotOne = 3
-      dotTwo = 0
-
-    } else {
-    dotOne = dotNodes.endIndex - 2
-    dotTwo = dotNodes.endIndex - 1
-    }
-    
     lineNode = getDrawnLineFrom(from: dotNodes[dotOne].position, to: dotNodes[dotTwo].position)
     sceneView.scene.rootNode.addChildNode(lineNode!)
   }
   
+  //MARK: determine if closing dot
+  func updateDots() {
+    if dotNodes.count == 4 {
+      distanceFinal()
+      dotOne = 3
+      dotTwo = 0
+    } else {
+      dotOne = dotNodes.endIndex - 2
+      dotTwo = dotNodes.endIndex - 1
+    }
+  }
+  
+  //MARK final distance
+  func distanceFinal() {
+    let start = dotNodes[2]
+    let end = dotNodes[3]
+    dotOne = 3
+    dotTwo = 2
+    distance = start.position.distance(from: end.position)
+    updateDistance(text: distance)
+  }
+  
   //MARK: - Adding a text overlay
-  func updateText(textA: Float, textB: Float) {
+  func updateDistance(text: Float) {
     
-    let distanceCM = String(format: "%.2f", (textA * 100))
+    let distanceCM = String(format: "%.2f cm", (text * 100))
     
     //MARK: 3D Text
-    textNode.removeFromParentNode()
-    
     let textGeometry = SCNText(string: distanceCM, extrusionDepth: 0.1)
     textGeometry.firstMaterial?.diffuse.contents = UIColor.red
     textNode = SCNNode(geometry: textGeometry)
     
     //MARK: TextNode Position
-    let node1 = dotNodes[0].position
-    let node2 = dotNodes[1].position
+    let node1 = dotNodes[dotOne].position
+    let node2 = dotNodes[dotTwo].position
     
     textNode.position = SCNVector3((node2.x + node1.x)/2.0,
                                    (node2.y + node1.y)/2.0,
@@ -162,7 +171,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
       sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
         node.removeFromParentNode() }
       dotNodes = [SCNNode]()
-  }
+    }
     // converting CGpoint to SCNVector3
     if let vector = sceneView.realWorldVector(screenPos: sceneView.center){
       addDot(at: vector)
