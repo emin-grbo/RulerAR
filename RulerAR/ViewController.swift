@@ -20,12 +20,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
   var lineNode: SCNNode?
   var dotOne = 0
   var dotTwo = 1
-  let test = "test"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-print(test)
       // Set the view's delegate
+      
       sceneView.delegate = self
       sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
       
