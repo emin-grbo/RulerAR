@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D715586A21245FD0007F6086 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715586921245FD0007F6086 /* AppDelegate.swift */; };
-		D715586C21245FD0007F6086 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D715586B21245FD0007F6086 /* art.scnassets */; };
 		D715586E21245FD0007F6086 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715586D21245FD0007F6086 /* ViewController.swift */; };
 		D715587121245FD0007F6086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D715586F21245FD0007F6086 /* Main.storyboard */; };
 		D715587321245FD2007F6086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D715587221245FD2007F6086 /* Assets.xcassets */; };
 		D715587621245FD2007F6086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D715587421245FD2007F6086 /* LaunchScreen.storyboard */; };
+		D71EE390213DA9F30070C0E5 /* UIViewsPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE38F213DA9F30070C0E5 /* UIViewsPlacement.swift */; };
+		D71EE392213DAAE10070C0E5 /* SSLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE391213DAAE10070C0E5 /* SSLabelView.swift */; };
+		D71EE394213DADAE0070C0E5 /* ARVCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE393213DADAE0070C0E5 /* ARVCSessionDelegate.swift */; };
+		D71EE396213DB7C10070C0E5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE395213DB7C10070C0E5 /* Functions.swift */; };
 		D728B10721342EB500622E4A /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = D728B10621342EB500622E4A /* Line.swift */; };
 		D739C3DA212C1859005156C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739C3D9212C1859005156C0 /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -20,12 +23,15 @@
 /* Begin PBXFileReference section */
 		D715586621245FD0007F6086 /* RulerAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RulerAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D715586921245FD0007F6086 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D715586B21245FD0007F6086 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		D715586D21245FD0007F6086 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D715587021245FD0007F6086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D715587221245FD2007F6086 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D715587521245FD2007F6086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D715587721245FD2007F6086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D71EE38F213DA9F30070C0E5 /* UIViewsPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewsPlacement.swift; sourceTree = "<group>"; };
+		D71EE391213DAAE10070C0E5 /* SSLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLabelView.swift; sourceTree = "<group>"; };
+		D71EE393213DADAE0070C0E5 /* ARVCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVCSessionDelegate.swift; sourceTree = "<group>"; };
+		D71EE395213DB7C10070C0E5 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		D728B10621342EB500622E4A /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		D739C3D9212C1859005156C0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,16 +67,27 @@
 			isa = PBXGroup;
 			children = (
 				D715586921245FD0007F6086 /* AppDelegate.swift */,
+				D71EE393213DADAE0070C0E5 /* ARVCSessionDelegate.swift */,
 				D715587221245FD2007F6086 /* Assets.xcassets */,
-				D715586B21245FD0007F6086 /* art.scnassets */,
 				D715586D21245FD0007F6086 /* ViewController.swift */,
-				D728B10621342EB500622E4A /* Line.swift */,
 				D739C3D9212C1859005156C0 /* Extensions.swift */,
+				D790C2602141AD9800C27751 /* Views */,
+				D71EE395213DB7C10070C0E5 /* Functions.swift */,
+				D71EE391213DAAE10070C0E5 /* SSLabelView.swift */,
 				D715586F21245FD0007F6086 /* Main.storyboard */,
 				D715587421245FD2007F6086 /* LaunchScreen.storyboard */,
 				D715587721245FD2007F6086 /* Info.plist */,
 			);
 			path = RulerAR;
+			sourceTree = "<group>";
+		};
+		D790C2602141AD9800C27751 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D71EE38F213DA9F30070C0E5 /* UIViewsPlacement.swift */,
+				D728B10621342EB500622E4A /* Line.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +148,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D715586C21245FD0007F6086 /* art.scnassets in Resources */,
 				D715587621245FD2007F6086 /* LaunchScreen.storyboard in Resources */,
 				D715587321245FD2007F6086 /* Assets.xcassets in Resources */,
 				D715587121245FD0007F6086 /* Main.storyboard in Resources */,
@@ -145,10 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71EE390213DA9F30070C0E5 /* UIViewsPlacement.swift in Sources */,
+				D71EE394213DADAE0070C0E5 /* ARVCSessionDelegate.swift in Sources */,
 				D715586E21245FD0007F6086 /* ViewController.swift in Sources */,
 				D728B10721342EB500622E4A /* Line.swift in Sources */,
+				D71EE396213DB7C10070C0E5 /* Functions.swift in Sources */,
 				D739C3DA212C1859005156C0 /* Extensions.swift in Sources */,
 				D715586A21245FD0007F6086 /* AppDelegate.swift in Sources */,
+				D71EE392213DAAE10070C0E5 /* SSLabelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
