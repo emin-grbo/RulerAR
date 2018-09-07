@@ -57,6 +57,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cri-dp-oDY">
                                 <rect key="frame" x="237" y="483" width="51" height="31"/>
+                                <connections>
+                                    <action selector="unitSwitchPressed:" destination="vQJ-ni-ztl" eventType="valueChanged" id="dCY-gp-o64"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -25,7 +25,7 @@ func updateDistance(text: Float) {
   
   var distanceCM: String {
     if self.unitSwitch.isOn == true {
-    return String(format: "%.1f", (text * 100))
+    return String(format: "%.1fcm", (text * 100))
     } else {
       return String(format: "%.1f''", (text * 39.3700787402))
     }

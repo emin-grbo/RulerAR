@@ -12,7 +12,7 @@
 		D715587121245FD0007F6086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D715586F21245FD0007F6086 /* Main.storyboard */; };
 		D715587321245FD2007F6086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D715587221245FD2007F6086 /* Assets.xcassets */; };
 		D715587621245FD2007F6086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D715587421245FD2007F6086 /* LaunchScreen.storyboard */; };
-		D71EE390213DA9F30070C0E5 /* UIViewsPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE38F213DA9F30070C0E5 /* UIViewsPlacement.swift */; };
+		D71EE390213DA9F30070C0E5 /* ARKitDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE38F213DA9F30070C0E5 /* ARKitDelegates.swift */; };
 		D71EE392213DAAE10070C0E5 /* SSLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE391213DAAE10070C0E5 /* SSLabelView.swift */; };
 		D71EE394213DADAE0070C0E5 /* ARVCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE393213DADAE0070C0E5 /* ARVCSessionDelegate.swift */; };
 		D71EE396213DB7C10070C0E5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE395213DB7C10070C0E5 /* Functions.swift */; };
@@ -28,7 +28,7 @@
 		D715587221245FD2007F6086 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D715587521245FD2007F6086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D715587721245FD2007F6086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D71EE38F213DA9F30070C0E5 /* UIViewsPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewsPlacement.swift; sourceTree = "<group>"; };
+		D71EE38F213DA9F30070C0E5 /* ARKitDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitDelegates.swift; sourceTree = "<group>"; };
 		D71EE391213DAAE10070C0E5 /* SSLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLabelView.swift; sourceTree = "<group>"; };
 		D71EE393213DADAE0070C0E5 /* ARVCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVCSessionDelegate.swift; sourceTree = "<group>"; };
 		D71EE395213DB7C10070C0E5 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		D790C2602141AD9800C27751 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D71EE38F213DA9F30070C0E5 /* UIViewsPlacement.swift */,
+				D71EE38F213DA9F30070C0E5 /* ARKitDelegates.swift */,
 				D728B10621342EB500622E4A /* Line.swift */,
 			);
 			path = Views;
@@ -161,7 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D71EE390213DA9F30070C0E5 /* UIViewsPlacement.swift in Sources */,
+				D71EE390213DA9F30070C0E5 /* ARKitDelegates.swift in Sources */,
 				D71EE394213DADAE0070C0E5 /* ARVCSessionDelegate.swift in Sources */,
 				D715586E21245FD0007F6086 /* ViewController.swift in Sources */,
 				D728B10721342EB500622E4A /* Line.swift in Sources */,

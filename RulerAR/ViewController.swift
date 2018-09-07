@@ -71,6 +71,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     purge()
   }
   
+  @IBAction func unitSwitchPressed(_ sender: Any) {
+    
+    for view in ssViews {
+      guard let labelnumber = view.label.text?.dropLast(2),
+      let number = Float(labelnumber) else {return}
+      
+      if unitSwitch.isOn == true {
+        let centimeters = String(format: "%.1fcm", (number * 2.54))
+      view.label.text = String(centimeters)
+      } else if unitSwitch.isOn == false {
+        let inches = String(format: "%.1f''", (number * 0.393700787402))
+        view.label.text = String(inches)
+      }
+    }
+  
+  }
+  
+  
 }
 
 

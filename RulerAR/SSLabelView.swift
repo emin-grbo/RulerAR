@@ -50,7 +50,7 @@ class SSLabelView: UIView {
     
     
     // Hardcodded text value
-    label.text = ""
+//    label.text = ""
   }
   
   required init?(coder aDecoder: NSCoder) {
