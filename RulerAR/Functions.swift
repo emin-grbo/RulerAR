@@ -24,7 +24,7 @@ func  calculate() {
 func updateDistance(text: Float) {
   
   var distanceCM: String {
-    if self.unitSwitch.isOn == true {
+    if self.unitSwitcher.isOn == true {
     return String(format: "%.1fcm", (text * 100))
     } else {
       return String(format: "%.1f''", (text * 39.3700787402))
@@ -74,5 +74,44 @@ func updateDistance(text: Float) {
     ssViews.removeAll()
     
   }
+  
+  
+  func surfaceArea() {
+    
+    var distances = [Float]()
+    
+    for view in ssViews {
+      guard let distanceLabel = view.label.text?.dropLast(2) else {return}
+      distances.append(Float(distanceLabel)!)
+    }
+    
+    let surface = (distances[0] + distances[2])/2 * (distances[1] + distances[3])/2
+    
+    surfaceLabel.text = String(format: "%.1f", surface)
+    
+  }
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 }

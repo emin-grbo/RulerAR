@@ -41,8 +41,8 @@
                                     <action selector="refreshBtn:" destination="vQJ-ni-ztl" eventType="touchUpInside" id="drl-K7-NBg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SURFACE M2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkQ-lu-yTD">
-                                <rect key="frame" x="128" y="20" width="65" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SURFACE CM2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkQ-lu-yTD">
+                                <rect key="frame" x="125" y="20" width="72" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,22 +55,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cri-dp-oDY">
-                                <rect key="frame" x="237" y="483" width="51" height="31"/>
-                                <connections>
-                                    <action selector="unitSwitchPressed:" destination="vQJ-ni-ztl" eventType="valueChanged" id="dCY-gp-o64"/>
-                                </connections>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RhF-mF-MTj" firstAttribute="top" secondItem="vX6-EC-C41" secondAttribute="bottom" constant="-103" id="2Qk-iz-ajV"/>
-                            <constraint firstItem="Cri-dp-oDY" firstAttribute="leading" secondItem="RhF-mF-MTj" secondAttribute="trailing" constant="50" id="34C-wK-IqL"/>
                             <constraint firstItem="RvY-fo-cX7" firstAttribute="centerY" secondItem="LTw-OX-r7d" secondAttribute="centerY" id="9CN-d6-xoJ"/>
                             <constraint firstItem="RhF-mF-MTj" firstAttribute="centerX" secondItem="LTw-OX-r7d" secondAttribute="centerX" id="9oI-4y-UMk"/>
                             <constraint firstItem="Erv-IV-8tU" firstAttribute="top" secondItem="vX6-EC-C41" secondAttribute="bottom" constant="-85" id="Bsn-PP-eh9"/>
                             <constraint firstItem="RhF-mF-MTj" firstAttribute="leading" secondItem="Erv-IV-8tU" secondAttribute="trailing" constant="50" id="UlY-cb-9jH"/>
-                            <constraint firstItem="Cri-dp-oDY" firstAttribute="top" secondItem="vX6-EC-C41" secondAttribute="bottom" constant="-85" id="ZcU-qf-K2g"/>
                             <constraint firstItem="RvY-fo-cX7" firstAttribute="centerX" secondItem="LTw-OX-r7d" secondAttribute="centerX" id="pYp-aI-kdV"/>
                             <constraint firstItem="vX6-EC-C41" firstAttribute="leading" secondItem="WBF-s0-ZMK" secondAttribute="leading" id="r5Q-gE-nMO"/>
                             <constraint firstItem="vX6-EC-C41" firstAttribute="trailing" secondItem="WBF-s0-ZMK" secondAttribute="trailing" id="rgJ-7v-Ob6"/>
@@ -81,7 +73,7 @@
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="vX6-EC-C41" id="B2E-aD-SSJ"/>
-                        <outlet property="unitSwitch" destination="Cri-dp-oDY" id="ZA1-J4-Dfv"/>
+                        <outlet property="surfaceLabel" destination="Mqp-l2-xE4" id="YAE-y4-rPD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="giR-Y1-McA" userLabel="First Responder" sceneMemberID="firstResponder"/>

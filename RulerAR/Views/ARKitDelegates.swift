@@ -29,6 +29,10 @@ func addDot(at centreVector: SCNVector3) {
     calculate()
     draw()
   }
+  
+  if dotNodes.count == 4 {
+    surfaceArea()
+  }
 }
   
   
@@ -50,6 +54,7 @@ func addDot(at centreVector: SCNVector3) {
     self.view.addSubview(ssLabelPlacedView)
     self.ssViews.append(ssLabelPlacedView)
     ssViews.last?.label.text = String(distance)
+    
   }
   
 }
