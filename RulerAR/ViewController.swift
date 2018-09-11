@@ -14,10 +14,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
   @IBOutlet var sceneView: ARSCNView!
   @IBOutlet weak var surfaceLabel: UILabel!
+  @IBOutlet weak var torchOutlet: UIButton!
+  
   
   var ssViews: [SSLabelView] = []
   var dotNodes = [SCNNode]()
-  //var textNode = SCNNode()
+  var torchToggle = false
   var lineNode: SCNNode?
   var dotOne = 0
   var dotTwo = 1
@@ -32,6 +34,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                                                   height: 25))
     self.view.addSubview(unitSwitcher)
     unitSwitcher.addTarget(self, action: #selector(self.unitSwitchPressed(_:)) , for: .touchUpInside)
+    
+    addFloaty()
 
     // Set the view's delegate
     sceneView.delegate = self
@@ -95,6 +99,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
   }
+  
+  
+  func toggleTorch(on: Bool) {
+    guard let device = AVCaptureDevice.default(for: AVMediaType.video)
+      else {return}
+    
+    if device.hasTorch {
+      do {
+        try device.lockForConfiguration()
+    
+        if on == true {
+          device.torchMode = .on
+          torchOutlet.setImage(UIImage(named: "torchON"), for: UIControlState.normal)
+        } else {
+          device.torchMode = .off
+          torchOutlet.setImage(UIImage(named: "torch"), for: UIControlState.normal)
+        }
+        
+        device.unlockForConfiguration()
+      } catch {
+        print("Torch could not be used")
+      }
+    } else {
+      print("Torch is not available")
+    }
+  }
+  
+  @IBAction func torchToggle(_ sender: Any) {
+    
+    torchToggle = !torchToggle
+    toggleTorch(on: torchToggle)
+    
+  }
+  
   
   
 }

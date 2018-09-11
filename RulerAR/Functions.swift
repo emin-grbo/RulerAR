@@ -92,6 +92,21 @@ func updateDistance(text: Float) {
   }
   
   
+  func addFloaty() {
+    let floatyButton = Floaty()
+    floatyButton.addItem("Units", icon: UIImage.init(named: "unitsIcon"))
+    floatyButton.addItem("About", icon: UIImage.init(named: "aboutIcon"))
+    floatyButton.addItem("Donate", icon: UIImage.init(named: "donateIcon"))
+    self.view.addSubview(floatyButton)
+    
+    floatyButton.verticalDirection = .down
+    floatyButton.openAnimationType = .slideDown
+    
+    floatyButton.setNeedsDisplay(CGRect(x: view.frame.width - 20, y: view.frame.height, width: 50, height: 50))
+    
+  }
+  
+  
 
   
   

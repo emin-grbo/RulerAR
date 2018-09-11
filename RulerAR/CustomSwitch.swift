@@ -8,38 +8,45 @@
 
 import UIKit
 
-class CustomSwitch: UIControl {
+@IBDesignable class CustomSwitch: UIControl {
   
   public var padding: CGFloat = 1 {
     didSet {
       self.layoutSubviews()
     }
   }
-  public var onTintColor = UIColor(white: 1, alpha: 0) {
+  
+  public var onTintColor = UIColor.clear {
     didSet {
       self.setupUI()
     }
   }
+  
   public var offTintColor = UIColor(white: 1, alpha: 0) {
     didSet {
       self.setupUI()
     }
   }
+  
+  @IBInspectable
   public var cornerRadius: CGFloat = 0.5 {
     didSet {
       self.layoutSubviews()
     }
   }
+  
   public var thumbTintColor = UIColor.white {
     didSet {
       self.thumbView.backgroundColor = self.thumbTintColor
     }
   }
+  
   public var thumbCornerRadius: CGFloat = 0.5 {
     didSet {
       self.layoutSubviews()
     }
   }
+  
   public var thumbSize = CGSize.zero {
     didSet {
       self.layoutSubviews()

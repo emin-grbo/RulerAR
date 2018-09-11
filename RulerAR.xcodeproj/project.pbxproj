@@ -16,6 +16,12 @@
 		D71EE392213DAAE10070C0E5 /* SSLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE391213DAAE10070C0E5 /* SSLabelView.swift */; };
 		D71EE394213DADAE0070C0E5 /* ARVCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE393213DADAE0070C0E5 /* ARVCSessionDelegate.swift */; };
 		D71EE396213DB7C10070C0E5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71EE395213DB7C10070C0E5 /* Functions.swift */; };
+		D72383422148411500AFF7DA /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D723833B2148411500AFF7DA /* FloatyViewController.swift */; };
+		D72383432148411500AFF7DA /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D723833C2148411500AFF7DA /* FloatyWindow.swift */; };
+		D72383442148411500AFF7DA /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D723833E2148411500AFF7DA /* FloatyDelegate.swift */; };
+		D72383452148411500AFF7DA /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D723833F2148411500AFF7DA /* FloatyManager.swift */; };
+		D72383462148411500AFF7DA /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72383402148411500AFF7DA /* Floaty.swift */; };
+		D72383472148411500AFF7DA /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72383412148411500AFF7DA /* FloatyItem.swift */; };
 		D728B10721342EB500622E4A /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = D728B10621342EB500622E4A /* Line.swift */; };
 		D7376D3421430C5A00D5C99B /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7376D3321430C5A00D5C99B /* CustomSwitch.swift */; };
 		D739C3DA212C1859005156C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739C3D9212C1859005156C0 /* Extensions.swift */; };
@@ -33,6 +39,13 @@
 		D71EE391213DAAE10070C0E5 /* SSLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLabelView.swift; sourceTree = "<group>"; };
 		D71EE393213DADAE0070C0E5 /* ARVCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVCSessionDelegate.swift; sourceTree = "<group>"; };
 		D71EE395213DB7C10070C0E5 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		D723833B2148411500AFF7DA /* FloatyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
+		D723833C2148411500AFF7DA /* FloatyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
+		D723833D2148411500AFF7DA /* Floaty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floaty.h; sourceTree = "<group>"; };
+		D723833E2148411500AFF7DA /* FloatyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyDelegate.swift; sourceTree = "<group>"; };
+		D723833F2148411500AFF7DA /* FloatyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyManager.swift; sourceTree = "<group>"; };
+		D72383402148411500AFF7DA /* Floaty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floaty.swift; sourceTree = "<group>"; };
+		D72383412148411500AFF7DA /* FloatyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyItem.swift; sourceTree = "<group>"; };
 		D728B10621342EB500622E4A /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		D7376D3321430C5A00D5C99B /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		D739C3D9212C1859005156C0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -77,11 +90,26 @@
 				D71EE395213DB7C10070C0E5 /* Functions.swift */,
 				D71EE391213DAAE10070C0E5 /* SSLabelView.swift */,
 				D7376D3321430C5A00D5C99B /* CustomSwitch.swift */,
+				D723833A214840FD00AFF7DA /* Floaty */,
 				D715586F21245FD0007F6086 /* Main.storyboard */,
 				D715587421245FD2007F6086 /* LaunchScreen.storyboard */,
 				D715587721245FD2007F6086 /* Info.plist */,
 			);
 			path = RulerAR;
+			sourceTree = "<group>";
+		};
+		D723833A214840FD00AFF7DA /* Floaty */ = {
+			isa = PBXGroup;
+			children = (
+				D723833D2148411500AFF7DA /* Floaty.h */,
+				D72383402148411500AFF7DA /* Floaty.swift */,
+				D723833E2148411500AFF7DA /* FloatyDelegate.swift */,
+				D72383412148411500AFF7DA /* FloatyItem.swift */,
+				D723833F2148411500AFF7DA /* FloatyManager.swift */,
+				D723833B2148411500AFF7DA /* FloatyViewController.swift */,
+				D723833C2148411500AFF7DA /* FloatyWindow.swift */,
+			);
+			path = Floaty;
 			sourceTree = "<group>";
 		};
 		D790C2602141AD9800C27751 /* Views */ = {
@@ -164,14 +192,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72383432148411500AFF7DA /* FloatyWindow.swift in Sources */,
 				D7376D3421430C5A00D5C99B /* CustomSwitch.swift in Sources */,
 				D71EE390213DA9F30070C0E5 /* ARKitDelegates.swift in Sources */,
 				D71EE394213DADAE0070C0E5 /* ARVCSessionDelegate.swift in Sources */,
+				D72383422148411500AFF7DA /* FloatyViewController.swift in Sources */,
+				D72383442148411500AFF7DA /* FloatyDelegate.swift in Sources */,
+				D72383462148411500AFF7DA /* Floaty.swift in Sources */,
 				D715586E21245FD0007F6086 /* ViewController.swift in Sources */,
+				D72383472148411500AFF7DA /* FloatyItem.swift in Sources */,
 				D728B10721342EB500622E4A /* Line.swift in Sources */,
 				D71EE396213DB7C10070C0E5 /* Functions.swift in Sources */,
 				D739C3DA212C1859005156C0 /* Extensions.swift in Sources */,
 				D715586A21245FD0007F6086 /* AppDelegate.swift in Sources */,
+				D72383452148411500AFF7DA /* FloatyManager.swift in Sources */,
 				D71EE392213DAAE10070C0E5 /* SSLabelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
